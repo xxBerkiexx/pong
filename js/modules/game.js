@@ -3,7 +3,7 @@
 
 import * as MENU from "./menu.js";              //Menu
 import * as PADDLE from "./paddle.js";          //Paddle
-import * as Ball from "./ball.js";              //Ball
+import * as BALL from "./ball.js";              //Ball
 
 
 //TO DO:
@@ -209,7 +209,7 @@ export function getErrorLevel() {
 // BALL SETUP
 //*****************************************************************************************************
 //Create instance of Ball
-export const ball = new Ball.Ball(canvas, ctx);
+export const ball = new BALL.Ball(canvas, ctx);
 
 function resetBall() {
     ball.x = canvas.width / 2 - ball.w / 2;     //Default X Position
@@ -550,7 +550,7 @@ export function gameLoop(timestamp) {
 
     //Draw the ball
     ball.draw();
-    ball.drawPrediction();
+    //ball.drawPrediction();
 
     //--------------- SCORE ---------------
     //Check if player 1 scored
