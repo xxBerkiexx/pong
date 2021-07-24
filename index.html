@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong</title>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <div class="aspect-ratio">
+
+        <div class="mstr-cntr">
+            <!--Game-->
+            <div id="Game-Cntr" class="game-cntr">
+                <!--Canvas-->
+                <canvas id="Canvas1"></canvas>
+                <!--Game header-->
+                <div id="Game-Header" class="game-header-cntr">
+                    <!--Scoreboard-->
+                    <div class="left-score-cntr">
+                        <!--Player Name-->
+                        <h5 id="Player2-Name" class="playerName">AI</h5>
+                        <!--Score-->
+                        <h4 id="Player2-Score" class="playerScore">0</h4>
+                    </div>
+                    <div class="right-score-cntr">
+                        <!--Player Name-->
+                        <h5 id="Player1-Name" class="playerName">P1</h5>
+                        <!--Score-->
+                        <h4 id="Player1-Score" class="playerScore">0</h4>
+                    </div>
+                    <!--Menu Button-->
+                    <div id="Menu-Btn" class="game-menu-btn">
+                        Menu
+                    </div>
+                    <!--Pause Button-->
+                    <div id="Pause-Btn" class="game-pause-btn"></div>
+                    <!--Dividing line-->
+                    <div class="game-header-divider"></div>
+                </div>
+                <!--Are you sure modal-->
+                <div id="Modal" class="confirm-modal hide-modal">
+                    <p>This will end the game.</p>
+                    <p>Are you sure?</p>
+                    <div id="Yes" class="confirm-btn">Yes</div>
+                    <div id="No" class="confirm-btn">No</div>
+                </div>
+                <!--Game over modal-->
+                <div id="Game-Over-Modal" class="confirm-modal hide-modal">
+                    <h4 class="game-over">Game Over</h4>
+                    <p><span id="Winner"></span> Wins!</p>
+                    <div id="Back-To-Menu" class="confirm-btn back-to-menu-btn">Back To Menu</div>
+                </div>
+            </div>
+            <!--Menu-->
+            <div id="Menu-Cntr" class="menu-cntr">
+                <div class="menu-wrapper">
+                    <!--Game Title-->
+                    <div class="menu-header-cntr">
+                        <h1>PONG</h1>
+                    </div>
+                    <!--Play Button-->
+                    <div class="menu-play-btn-cntr">
+                        <div id="Play-Btn" class="menu-play-btn">Play</div>
+                    </div>
+                    <!--1 or 2 Player Buttons-->
+                    <div class="menu-multiplayer-cntr">
+                        <!--1 Player-->
+                        <div class="multiplayer-option">
+                            <label for="Singleplayer">1P
+                                <input type="radio" name="multiplayer" id="Singleplayer" class="playOption" value="1" checked>
+                                <span class="custom-radio"></span>
+                            </label>
+                        </div>
+                        <!--2 Players-->
+                        <div class="multiplayer-option">
+                            <label for="Multiplayer">2P
+                                <input type="radio" name="multiplayer" id="Multiplayer" class="playOption" value="2">
+                                <span class="custom-radio"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Icon to open controls info-->
+                <div id="Menu-Controls-Btn" class="menu-controls-cntr">
+                    <div class="menu-controls-tooltip">
+                        Controls
+                    </div>
+                    <img id="Menu-Controls-Img" src="./assets/controller.svg" alt="Controls">
+                </div>
+            </div>
+            <!--Controls Info-->
+            <div id="Controls-Cntr" class="controls-cntr hide-controls">
+                <!--List of keys and what they do-->
+                <div class="keys-cntr">
+                    <div class="keys-cntr-left">
+                        <p>Esc</p>
+                        <p>Space</p>
+                        <p>&#8593;</p>
+                        <p>&#8595;</p>
+                        <p>W</p>
+                        <p>S</p>
+                    </div>
+                    <div class="keys-cntr-right">
+                        <p>- Pause Game</p>
+                        <p>- Launch Ball</p>
+                        <p>- Move Paddle Up</p>
+                        <p>- Move Paddle Down</p>
+                        <p>- Move Player 2 Paddle Up</p>
+                        <p>- Move Player 2 Paddle Down</p>
+                    </div>
+                </div>
+                <!--Close button-->
+                <div id="Close-Btn" class="close-btn-cntr">
+                    <img src="./assets/x-lg.svg" alt="Go Back To Menu">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Scripts-->
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

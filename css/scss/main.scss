@@ -1,0 +1,553 @@
+//Import Font
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P:400');  //Press Start 2P
+
+//Import Other SASS Files
+@import "./variables.scss";                     //Variables
+@import "./css-reset.scss";                     //CSS Reset
+
+
+
+html, body {
+    background-color: $color2;
+}
+
+.aspect-ratio {
+    aspect-ratio: 3 / 2;
+    max-height: 600px;
+    max-width: 960px;
+}
+
+.mstr-cntr {
+    width: 100%;                                //Full width of document
+    height: 100%;                               //Full height of document
+    position: relative;                         //Make a parent
+    background-color: black;                  //Default background color
+}
+
+img {
+    width: 100%;                                //Fill parent container
+    display: block;                             //Get rid of weird space at bottom
+    filter: invert(100%) 
+            sepia(11%) 
+            saturate(1877%) 
+            hue-rotate(210deg) 
+            brightness(117%) 
+            contrast(109%);                     //Make image white
+}
+
+
+//--------------------------------------- GAME ---------------------------------------
+.game-cntr {
+    width: 100%;                                //Full width of parent container
+    height: 100%;                               //Full height of parent container
+    position: absolute;                         //Absolute positioning
+    top: 0;
+    left: 0;
+}
+
+.game-header-cntr {
+    width: 100%;                                //Full width of container
+    height: 80px;                               //80px height
+    border-bottom: 2px solid white;           //Add a bottom border
+    position: absolute;                         //Absolute positioning
+    top: 0;
+    left: 0;
+    display: flex;                              //Display contents flex
+    justify-content: center;                    //Center contents
+    gap: 40px;                                  //Add space between containers
+    transition: .2s;                            //Animate responsiveness
+    & .left-score-cntr, & .right-score-cntr {
+        padding-top: 10px;                          //Push down a little
+        transition: .2s;                            //Animate responsiveness
+    }
+    & .playerName, & .playerScore {
+        margin: 0 0;                                //Completely gid rid of margins
+        text-align: center;                         //Center text
+        transition: .2s;                            //Animate responsiveness
+        cursor: default;                            //Get rid of text cursor
+    }
+    & .playerName {
+        margin-bottom: 5px;                         //Push score down a little
+    }
+    & .game-menu-btn, & .game-pause-btn {
+        position: absolute;                         //Absolute positioning
+        top: 50%;                                   //Vertically center
+        transform: translateY(-50%);
+        cursor: pointer;                            //Show it can be clicked
+        transition: .2s;                            //Animate responsiveness
+    }
+    & .game-menu-btn {
+        left: 18px;                                 //Push to the right
+    }
+    & .game-pause-btn {
+        right: 18px;                                //Push to the left
+    }
+    & .game-header-divider {
+        width: 2px;                                 //Width
+        height: 100%;                               //Full height of container
+        background-color: white;                  //White background
+        position: absolute;                         //Absolute positioning
+        top: 0;                                     //Center of container
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+#Canvas1 {
+    width: 100%;                                //Full width of parent container
+    //Canvas height is set using javascript
+    position: absolute;                         //Absolute positioning
+    bottom: 0;
+    left: 0;
+}
+
+.confirm-modal {
+    width: 425px;
+    padding: 10px 20px 12px;                    //Add padding
+    position: absolute;                         //Absolute positioning
+    top: 50%;                                   //Center of screen
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid white;                  //Add border
+    text-align: center;                         //Center text
+    background-color: rgba(0, 0, 0, 0.5);     //Slightly transparent background
+    transition: .2s;                            //Animate responsiveness
+    & .confirm-btn {
+        width: 90px;                                //Button width
+        display: inline-block;                      //Display side by side
+        border: 2px solid white;                  //Add a border
+        cursor: pointer;                            //Show it can be clicked
+        transition: .2s;                            //Animate responsiveness
+        &:hover {
+            font-weight: bold;                          //Make bold
+            color: black;                             //Make text black
+            background-color: white;                  //Add a white background
+        }
+    }
+    & .back-to-menu-btn {
+        width: 180px;
+        font-size: 0.8rem;
+    }
+    & .game-over {
+        margin: 0 0 10px;
+        font-size: 1.953rem;
+        transition: .2s;
+    }
+}
+
+.hide-modal {
+    display: none;                              //Hide the modal
+}
+
+//--------------------------------------- MENU ---------------------------------------
+.menu-cntr {
+    width: 100%;                                //Full width of parent container
+    height: 100%;                               //Full height of parent container
+    text-align: center;                         //Center contents
+    position: relative;                         //Make a parent
+    background-color: black;                  //Background color overlay
+    & .menu-wrapper {                               //Wrapper to center contents
+        position: absolute;                         //Absolute positioning
+        top: 50%;                                   //Center
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    & .menu-header-cntr {
+        & h1 {
+            font-size: 4.768rem;                        //Increase font size
+            transition: .2s;                            //Animate responsiveness
+        }
+    }
+    & .menu-play-btn-cntr {
+        margin-bottom: 45px;                        //Add a bottom margin
+        transition: .2s;                            //Animate responsiveness
+        & .menu-play-btn {
+            margin: 0 auto;                             //Center container
+            padding: 5px 0px;                           //Add padding around text
+            width: 150px;                               //Width
+            border: 2px solid white;                  //Add a button
+            cursor: pointer;                            //Show it can be clicked
+            transition: .2s;                            //Animate responsiveness
+            &:hover {
+                background-color: white;                  //Make background white
+                color: black;                             //Make font black
+                font-weight: bold;                          //Make text bold
+            }
+        }
+    }
+    & .menu-multiplayer-cntr {
+        
+    }
+}
+
+//Multiplayer radio buttons
+.multiplayer-option {
+    width: 100px;                               //Width of container
+    display: inline-block;                      //Show side by side
+    transition: .2s;                            //Animate responsiveness
+    & label, & input {
+        display: block;                             //Stack label and radio
+        margin: 0 auto;                             //Center radio buttons
+        transition: .2s;                            //Animate responsiveness
+    }
+    & label {
+        position: relative;                         //Make a parent
+        cursor: pointer;                            //Show it can be clicked
+        user-select: none;                          //Control appearance of selection
+    }
+    & input {
+        //Hide the default input
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+    & .custom-radio {
+        position: absolute;                         //Absolute positioning
+        top: 120%;                                  //Push down
+        left: 50%;                                  //Center X position
+        transform: translateX(-50%);
+        width: 16px;                                //Width
+        height: 16px;                               //Height
+        background-color: white;                  //Background color
+        border-radius: 50%;                         //Make a circle
+        transition: .2s;                            //Animate responsiveness
+    }
+    & label:hover input ~ .custom-radio {
+        background-color: rgb(200, 200, 200);     //Slightly grey background on hover
+    }
+    & .custom-radio:after {
+        content: "";                                //Create the dot; Hidden when not selected
+        position: absolute;
+        display: none;
+        transition: .2s;                            //Animate responsiveness
+    }
+    & label input:checked ~ .custom-radio:after {
+        display: block;                             //Show the dot when selected
+    }
+    & label .custom-radio:after {
+        top: 3px;                                   //Center dot
+        left: 3px;                                  //Center dot
+        width: 10px;                                //Width
+        height: 10px;                               //Height
+        border-radius: 50%;                         //Make a circle
+        background-color: black;                  //Set background color
+    }
+}
+
+//Show controls menu button
+.menu-controls-cntr {
+    margin: 12px 22px;                          //Add margin
+    width: 50px;                                //Width
+    height: 50px;                               //Height
+    position: absolute;                         //Absolute positioning
+    right: 0;                                   //Set bottom right
+    bottom: 0;
+    visibility: visible;                        //Show menu
+    opacity: 1;                                 //Opacity for animation
+    transition: .2s;                            //Animate transition
+    //Add a tooltip
+    & .menu-controls-tooltip {
+        opacity: 0;                                 //Hide the tooltip
+        padding: 5px 10px;                          //Add padding around text
+        border: 2px solid white;                  //Add a border
+        position: absolute;                         //Absolute positioning
+        top: -40px;                                 //Push above image
+        right: 0;                                   //Right alligned
+        font-size: 65%;                             //12px
+        transition: .2s;                            //Animate between hide/show
+        cursor: default;                            //Show default cursor
+        user-select: none;                          //Can't be highlighted
+        //Add an arrow
+        &::after {
+            content: " ";                               //Empty container
+            position: absolute;                         //Absolute positioning
+            top: 100%;                                  //At the bottom of tooltip
+            left: 71%;                                  //Push to center of image below
+            border-width: 8px;                          //Arrow size
+            border-style: solid;                        //Solid
+            border-color: white transparent transparent transparent;    //Make an arrow
+        }
+    }
+    &:hover .menu-controls-tooltip {
+        opacity: 1;                                 //Show the tooltip
+    }
+    & img {
+        cursor: pointer;                            //Show it can be clicked
+    }
+}
+
+.hide-menu {
+    opacity: 0;                                 //Opacity for animation
+    visibility: hidden;                         //Hide menu
+}
+
+
+//--------------------------------------- CONTROLS ---------------------------------------
+.controls-cntr {
+    width: 100%;                                //Full width of parent container
+    height: 100%;                               //Full height of parent container
+    text-align: center;                         //Center contents
+    position: absolute;                         //Absolute positioning
+    top: 0;                                     //Top Left
+    left: 0;
+    background-color: black;                  //Background color overlay
+    visibility: visible;                        //Show
+    opacity: 1;
+    transition: .2s;                            //Animate transition
+    & .keys-cntr {
+        position: absolute;                         //Absolute positioning
+        top: 50%;                                   //Center of screen
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;                              //Display contents as flex
+        &-left {
+            margin-right: 15px;                         //Add space between containers
+            text-align: right;                          //Right aligned text
+            transition: .2s;                            //Animate responsiveness
+        }
+        &-right {
+            text-align: left;                           //Left aligned text
+            width: 432px;                               //Width
+            transition: .2s;                            //Animate responsiveness
+        }
+        & p {
+            transition: .2s;                            //Animate responsiveness
+        }
+    }
+    & .close-btn-cntr {
+        position: absolute;                         //Absolute positioning
+        top: 0;
+        left: 0;
+        margin: 16px 18px;                          //Add a margin
+        width: 25px;                                //Width
+        height: 25px;                               //Height
+        cursor: pointer;                            //Show it can be clicked
+        transition: .2s;                            //Animate responsiveness
+    }
+}
+
+.hide-controls {
+    opacity: 0;                                 //Hide
+    visibility: hidden;
+}
+
+
+//------------------------------------ MAX SCREEN WIDTH OF 825PX ------------------------------------
+@media screen and (max-width: 825px) {
+    //------------------- GAME -------------------
+    .game-header-cntr {
+        height: 70px;                               //Decrease height
+        gap: 35px;                                  //Decrease space between containers
+        & .left-score-cntr, & .right-score-cntr {
+            padding-top: 5px;                          //Push down a little
+        }
+        & .playerName {
+            margin-bottom: 3px;                         //Push score down a little
+        }
+    }
+
+    .confirm-modal {
+        width: 410px;                               //Decrease width
+        padding: 10px 20px 12px;                    //Add padding
+        font-size: 0.9rem;                          //Decrease font size
+        & .confirm-btn {
+            width: 75px;                                //Decrease Button width
+        }
+        & .back-to-menu-btn {
+            width: 180px;
+        }
+        & .game-over {
+            font-size: 1.758rem;
+        }
+    }
+}
+
+//------------------------------------ MAX SCREEN WIDTH OF 700PX ------------------------------------
+@media screen and (max-width: 700px) {
+    //------------------- GAME -------------------
+    .game-header-cntr {
+        height: 60px;                               //Decrease height
+        gap: 30px;                                  //Decrease space between containers
+        & .left-score-cntr, & .right-score-cntr {
+            padding-top: 6px;                          //Push down a little
+        }
+        & .playerName {
+            font-size: 1.0rem;                          //Decrease font size
+        }
+        & .playerScore {
+            font-size: 1.25rem;                         //Decrease font size
+        }
+        & .game-menu-btn {
+            font-size: 0.8rem;                          //Decrease font size
+        }
+        & .game-pause-btn {
+            font-size: 0.8rem;                          //Decrease font size
+        }
+    }
+
+    .confirm-modal {
+        width: 375px;                               //Decrease width
+        padding: 10px 20px 12px;                    //Add padding
+        font-size: 0.8rem;                          //Decrease font size
+        & .confirm-btn {
+            width: 70px;                                //Decrease Button width
+        }
+        & .back-to-menu-btn {
+            width: 180px;
+        }
+        & .game-over {
+            font-size: 1.563rem;
+        }
+    }
+}
+
+//------------------------------------ MAX SCREEN WIDTH OF 600PX ------------------------------------
+@media screen and (max-width: 600px) {
+    //------------------- GAME -------------------
+    .game-header-cntr {
+        height: 50px;                               //Decrease height
+        gap: 25px;                                  //Decrease space between containers
+        & .playerName {
+            font-size: 0.8rem;                          //Decrease font size
+        }
+        & .playerScore {
+            font-size: 1rem;                            //Decrease font size
+        }
+    }
+
+    //------------------- MENU -------------------
+    .menu-cntr {
+        & .menu-header-cntr {
+            & h1 {
+                font-size: 4.292rem;                        //Decrease font size
+            }
+        }
+        & .menu-play-btn-cntr {
+            margin-bottom: 35px;                        //Decrease bottom margin
+            & .menu-play-btn {
+                padding: 5px 0px;                           //Add padding around text
+                width: 135px;                               //Width
+                font-size: 0.875rem;                        //Decrease font size
+            }
+        }
+    }
+
+    //Multiplayer radio buttons
+    .multiplayer-option {
+        width: 80px;                               //Width of container
+        & label {   
+            font-size: 0.875rem;                    //Decrease font size
+        }
+        & .custom-radio {
+            width: 14px;                                //Decrease Width
+            height: 14px;                               //Decrease Height
+        }
+        & label .custom-radio:after {
+            width: 8px;                                 //Decrease Width
+            height: 8px;                                //Decrease Height
+        }
+    }
+
+    //Show controls menu button
+    .menu-controls-cntr {
+        width: 40px;                                //Decrease Width
+        height: 40px;                               //Decrease Height
+        & .menu-controls-tooltip {
+            font-size: 56.3%;                           //Decrease font size; 9px
+        }
+    }
+
+    //------------------- CONTROLS -------------------
+    .controls-cntr {
+        & .keys-cntr {
+            &-right {
+                width: 378px;                               //Decrease Width
+            }
+            & p {
+                font-size: 0.875rem;                        //Decrease font size
+            }
+        }
+        & .close-btn-cntr {
+            width: 20px;                                //Decrease Width
+            height: 20px;                               //Decrease Height
+        }
+    }
+}
+
+
+//------------------------------------ MAX SCREEN WIDTH OF 500PX ------------------------------------
+@media screen and (max-width: 500px) {
+    //------------------- GAME -------------------
+    .game-header-cntr {
+        height: 40px;                               //Decrease height
+        gap: 20px;                                  //Decrease space between containers
+        & .playerName {
+            font-size: 0.64rem;                         //Decrease font size
+        }
+        & .playerScore {
+            font-size: 0.8rem;                          //Decrease font size
+        }
+        & .game-menu-btn {
+            font-size: 0.64rem;                         //Decrease font size
+        }
+        & .game-pause-btn {
+            font-size: 0.64rem;                         //Decrease font size
+        }
+    }
+
+    //------------------- MENU -------------------
+    .menu-cntr {
+        & .menu-header-cntr {
+            & h1 {
+                font-size: 3.815rem;                        //Decrease font size
+            }
+        }
+        & .menu-play-btn-cntr {
+            margin-bottom: 25px;                        //Decrease bottom margin
+            & .menu-play-btn {
+                padding: 3px 0px;                           //Add padding around text
+                width: 115px;                               //Width
+                font-size: 0.75rem;                         //Decrease font size
+            }
+        }
+    }
+
+    //Multiplayer radio buttons
+    .multiplayer-option {
+        width: 70px;                               //Width of container
+        & label {   
+            font-size: 0.75rem;                    //Decrease font size
+        }
+        & .custom-radio {
+            width: 12px;                                //Decrease Width
+            height: 12px;                               //Decrease Height
+        }
+        & label .custom-radio:after {
+            width: 6px;                                 //Decrease Width
+            height: 6px;                                //Decrease Height
+        }
+    }
+
+    //Show controls menu button
+    .menu-controls-cntr {
+        width: 35px;                                //Decrease Width
+        height: 35px;                               //Decrease Height
+    }
+
+    //------------------- CONTROLS -------------------
+    .controls-cntr {
+        & .keys-cntr {
+            &-right {
+                width: 324px;                               //Decrease Width
+            }
+            & p {
+                font-size: 0.75rem;                         //Decrease font size
+            }
+        }
+        & .close-btn-cntr {
+            width: 18px;                                //Decrease Width
+            height: 18px;                               //Decrease Height
+        }
+    }
+}
