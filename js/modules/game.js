@@ -586,13 +586,13 @@ export function gameLoop(timestamp) {
     updateScoreboard();
 
     //End the game when a player reaches 7
-    if (scorePlayer01 === 2 || scorePlayer02 === 2) {
+    if (scorePlayer01 === 7 || scorePlayer02 === 7) {
         //Player 01 wins
-        if (scorePlayer01 === 2) {
+        if (scorePlayer01 === 7) {
             gameOverMessage("Player 01");
         }
         //Player 02 wins
-        if (scorePlayer02 === 2) {
+        if (scorePlayer02 === 7) {
             //Check if computer is player 02
             if (MENU.playAI === true) {
                 gameOverMessage("Computer");
